@@ -10,6 +10,10 @@ export default defineConfig(({mode}) => {
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
     },
+    css: {
+      // Explicitly tell Vite NOT to look for postcss.config.js on your computer
+      postcss: {},
+    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
