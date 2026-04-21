@@ -197,13 +197,14 @@ export default function Home() {
              
              {/* Reel Embed Container */}
              <div className="w-full h-full flex justify-center items-center bg-[#050505] overflow-hidden relative">
-                {/* The iframe embed for IG Reel */}
-                <iframe 
-                  src="https://www.instagram.com/p/C4lbtCJswgW/embed/captioned" 
-                  className="absolute inset-[-2px] w-[calc(100%+4px)] h-[calc(100%+4px)] border-0 outline-none max-w-none" 
-                  scrolling="no" 
-                ></iframe>
-                {/* Overlay to catch clicks if we want to route instead, but here we let them interact with the reel */}
+                <video 
+                  src="https://res.cloudinary.com/domyd01x9/video/upload/v1776775264/Video-116_tdpvnp.mp4" 
+                  className="absolute inset-0 w-full h-full object-cover" 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                ></video>
              </div>
           </motion.div>
 
@@ -222,10 +223,10 @@ export default function Home() {
                </div>
                
                <LazyImage 
-                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&fit=crop" 
+                  src="https://res.cloudinary.com/domyd01x9/image/upload/q_auto/f_auto/v1776775531/Screenshot_1126_jck4zg.png" 
                   alt="Airavoto ERP" 
-                  containerClassName="w-full h-full absolute inset-0 mix-blend-multiply opacity-[0.15] group-hover:opacity-[0.25] group-hover:scale-105 transition-all duration-700 pointer-events-none" 
-                  className="w-full h-full object-cover" 
+                  containerClassName="w-full h-full absolute inset-0 mix-blend-multiply opacity-[0.4] group-hover:opacity-[0.6] group-hover:scale-105 transition-all duration-700 pointer-events-none" 
+                  className="w-full h-full object-cover object-top" 
                />
                
                <div className="relative z-20 max-w-2xl">

@@ -54,8 +54,8 @@ export default function AiravotoERP() {
               {/* Browser Content (Mockup Image) */}
               <div className="relative aspect-video w-full overflow-hidden bg-zinc-200">
                  <LazyImage 
-                    src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1600&fit=crop" 
-                    className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
+                    src="https://res.cloudinary.com/domyd01x9/image/upload/q_auto/f_auto/v1776775531/Screenshot_1126_jck4zg.png" 
+                    className="w-full h-full object-cover object-top group-hover:scale-[1.02] transition-transform duration-700"
                     alt="Airavoto Gaming ERP Preview"
                     containerClassName="w-full h-full"
                  />
