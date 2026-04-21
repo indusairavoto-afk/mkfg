@@ -157,9 +157,15 @@ export default function Home() {
           transition={{ delay: 0.9 }}
           className="absolute bottom-12 left-1/2 -translate-x-1/2 z-40"
         >
-          <a href="mailto:ujwal.guru999@gmail.com" className="px-8 py-3 rounded-full border border-white/30 bg-black/60 backdrop-blur-xl text-white text-sm font-semibold tracking-wide hover:bg-white hover:text-black transition-all">
+          <button 
+            onClick={(e) => {
+              e.preventDefault();
+              window.dispatchEvent(new Event('open-contact-modal'));
+            }}
+            className="px-8 py-3 rounded-full border border-white/30 bg-black/60 backdrop-blur-xl text-white text-sm font-semibold tracking-wide hover:bg-white hover:text-black transition-all"
+          >
             Contact Now
-          </a>
+          </button>
         </motion.div>
       </div>
 

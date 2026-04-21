@@ -1,11 +1,12 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Play, Menu, X } from 'lucide-react';
+import { Play, Menu, X, MessageCircle, Phone, FileText } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -14,6 +15,12 @@ export default function Navbar() {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const openModal = () => setIsContactModalOpen(true);
+    window.addEventListener('open-contact-modal', openModal);
+    return () => window.removeEventListener('open-contact-modal', openModal);
   }, []);
 
   const links = [
@@ -75,9 +82,9 @@ export default function Navbar() {
                   </Link>
                ))}
             </div>
-            <a href="mailto:ujwal.guru999@gmail.com" className={`px-5 py-2 rounded-full border border-white/20 text-xs font-semibold hover:bg-white hover:text-black hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-300 ${isScrolled ? 'hidden lg:block' : 'block'}`}>
+            <button onClick={() => setIsContactModalOpen(true)} className={`px-5 py-2 rounded-full border border-white/20 text-xs font-semibold hover:bg-white hover:text-black hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-300 ${isScrolled ? 'hidden lg:block' : 'block'}`}>
               Contact
-            </a>
+            </button>
           </div>
         </motion.nav>
       </div>
@@ -101,19 +108,85 @@ export default function Navbar() {
                   {link.name}
                 </Link>
               ))}
-              <a
-                href="mailto:ujwal.guru999@gmail.com"
-                onClick={() => setIsOpen(false)}
-                className="border border-white/20 rounded-full text-center py-3 text-white text-xs font-bold uppercase tracking-widest mt-4"
+              <button
+                onClick={() => { setIsOpen(false); setIsContactModalOpen(true); }}
+                className="border border-white/20 rounded-full text-center py-3 text-white text-xs font-bold uppercase tracking-widest mt-4 hover:bg-white hover:text-black transition-colors"
               >
                 Contact Now
-              </a>
+              </button>
             </motion.div>
           )}
         </AnimatePresence>
       
       {/* Spacer to prevent layout jump under absolute/fixed nav */}
       <div className="h-[72px]" aria-hidden="true" />
+
+      {/* Contact Modal */}
+      <AnimatePresence>
+        {isContactModalOpen && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsContactModalOpen(false)}
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative w-full max-w-sm bg-[#111] border border-white/10 rounded-2xl md:rounded-[2rem] p-6 shadow-2xl flex flex-col items-center"
+            >
+              <button 
+                onClick={() => setIsContactModalOpen(false)} 
+                className="absolute top-4 right-4 text-white/50 hover:text-white transition-colors p-2"
+              >
+                <X size={20} />
+              </button>
+              
+              <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-5">
+                <MessageCircle className="text-white" size={24} />
+              </div>
+              
+              <h3 className="text-xl font-bold font-sans tracking-tight text-white mb-2">Let's Connect</h3>
+              <p className="text-sm text-zinc-400 text-center mb-8 px-2">
+                Reach out via your preferred method. We usually respond instantly.
+              </p>
+              
+              <div className="flex flex-col gap-3 w-full">
+                <a 
+                  href="https://wa.me/918657955764" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center gap-3 bg-white text-black p-4 rounded-xl font-bold hover:bg-zinc-200 hover:scale-[1.02] active:scale-[0.98] transition-all"
+                >
+                  <MessageCircle size={20} className="text-green-600" />
+                  WhatsApp
+                </a>
+                
+                <a 
+                  href="tel:+918657955764" 
+                  className="flex items-center gap-3 bg-zinc-900 border border-white/10 text-white p-4 rounded-xl font-bold hover:bg-zinc-800 hover:border-white/20 transition-all"
+                >
+                  <Phone size={20} className="text-blue-400" />
+                  Call (8657955764)
+                </a>
+                
+                <a 
+                  href="https://forms.google.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center gap-3 bg-zinc-900 border border-white/10 text-white p-4 rounded-xl font-bold hover:bg-zinc-800 hover:border-white/20 transition-all"
+                >
+                  <FileText size={20} className="text-purple-400" />
+                  Fill Google Form
+                </a>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
