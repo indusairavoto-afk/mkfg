@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="w-full flex flex-col">
       {/* Main Hero Card wrapper */}
-      <div className="mx-4 md:mx-8 xl:mx-auto max-w-[1400px] relative h-[800px] bg-[#0a0a0a] rounded-[2rem] border border-white/10 overflow-hidden flex flex-col items-center justify-start pt-24 text-white w-full">
+      <div className="mx-auto max-w-[1400px] w-[calc(100%-2rem)] md:w-[calc(100%-4rem)] xl:w-full relative h-[750px] md:h-[800px] bg-[#0a0a0a] rounded-[2.5rem] md:rounded-[3rem] border border-white/10 overflow-hidden flex flex-col items-center justify-start pt-16 md:pt-24 text-white">
 
         {/* Subtle Math/Grid Background like the image */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
@@ -20,9 +20,9 @@ export default function Home() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="relative z-20 text-center flex flex-col items-center px-4"
+          className="relative z-20 text-center flex flex-col items-center px-4 md:px-0"
         >
-          <h1 className="text-[2.5rem] md:text-[4.5rem] lg:text-[5.5rem] leading-[1.1] font-sans font-semibold tracking-tight">
+          <h1 className="text-[2.2rem] sm:text-[3rem] md:text-[4.5rem] lg:text-[5.5rem] leading-[1.1] font-sans font-semibold tracking-tight">
             Crafting Digital Solutions <br />
             that <span className="font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-zinc-300 to-zinc-600">Drive Growth</span>
           </h1>
@@ -69,7 +69,7 @@ export default function Home() {
           initial={{ opacity: 0, x: -40, rotate: -5 }}
           animate={{ opacity: 1, x: 0, rotate: -2 }}
           transition={{ delay: 0.4 }}
-          className="absolute left-[-2%] md:left-[8%] top-[35%] md:top-[40%] z-20 w-[160px] md:w-[280px] bg-[#111] border border-white/10 rounded-xl md:rounded-2xl p-2 md:p-3 shadow-2xl"
+          className="absolute left-[-5%] sm:left-[2%] md:left-[8%] top-[38%] md:top-[40%] z-20 w-[140px] sm:w-[160px] md:w-[280px] bg-[#111] border border-white/10 rounded-xl md:rounded-2xl p-2 md:p-3 shadow-2xl scale-75 sm:scale-90 md:scale-100 origin-left"
         >
           <div className="relative w-full h-[80px] md:h-[140px] bg-zinc-900 rounded-lg md:rounded-xl overflow-hidden mb-2 md:mb-3 flex items-center justify-center border border-white/5">
             <div className="w-8 h-8 md:w-12 md:h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center border border-white/10">
@@ -102,7 +102,7 @@ export default function Home() {
            animate={{ opacity: 1, x: 0, rotate: 2 }}
            whileHover={{ y: -5, rotate: 0, scale: 1.02 }}
            transition={{ delay: 0.5, duration: 0.4 }}
-           className="absolute right-[-2%] md:right-[5%] top-[50%] md:top-[42%] z-20 w-[200px] md:w-[320px] bg-white/90 backdrop-blur-xl border border-white/60 text-zinc-900 p-4 md:p-6 rounded-2xl md:rounded-[2rem] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] cursor-default"
+           className="absolute right-[-8%] sm:right-[2%] md:right-[5%] top-[55%] md:top-[42%] z-20 w-[200px] md:w-[320px] bg-white/90 backdrop-blur-xl border border-white/60 text-zinc-900 p-3 md:p-6 rounded-2xl md:rounded-[2rem] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] cursor-default scale-75 sm:scale-90 md:scale-100 origin-right"
         >
            <div className="flex items-center gap-3 mb-4 md:mb-6">
              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-white flex-shrink-0 shadow-md">
@@ -140,7 +140,7 @@ export default function Home() {
         </motion.div>
 
         {/* Central Portrait Container */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[350px] md:w-[480px] z-10 flex flex-col items-center justify-end pointer-events-none">
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[300px] sm:w-[350px] md:w-[480px] z-10 flex flex-col items-center justify-end pointer-events-none">
           <LazyImage
             src="https://res.cloudinary.com/domyd01x9/image/upload/f_auto,q_auto/WhatsApp_Image_2026-04-21_at_10.46.33_AM_f1idpo"
             alt="Portrait"
@@ -202,7 +202,6 @@ export default function Home() {
                   src="https://www.instagram.com/p/C4lbtCJswgW/embed/captioned" 
                   className="absolute inset-[-2px] w-[calc(100%+4px)] h-[calc(100%+4px)] border-0 outline-none max-w-none" 
                   scrolling="no" 
-                  allowTransparency={true}
                 ></iframe>
                 {/* Overlay to catch clicks if we want to route instead, but here we let them interact with the reel */}
              </div>
@@ -259,7 +258,7 @@ export default function Home() {
                   <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#111] via-[#111]/80 to-transparent z-10 pointer-events-none"></div>
 
                   <div className="absolute bottom-5 left-5 z-20">
-                     <h4 className="text-lg md:text-xl font-bold mb-1 drop-shadow-md">AI Chatballs</h4>
+                     <h4 className="text-lg md:text-xl font-bold mb-1 drop-shadow-md">AI Chatbots</h4>
                      <p className="text-[9px] md:text-[10px] font-mono opacity-50 uppercase tracking-widest drop-shadow-md">Custom LLM</p>
                   </div>
                </div>
