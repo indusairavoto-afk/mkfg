@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
-import { Play, TrendingUp, Sparkles, Scissors, Code2, MonitorPlay, Users } from 'lucide-react';
+import { Play, TrendingUp, Sparkles, Code2, MonitorPlay, Users, Heart, MessageCircle, Send, Figma, Video, Server, Component, Palette, Box, Layers, Cpu, Compass, Aperture, LayoutTemplate, Wand2, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { LazyImage } from '../components/LazyImage';
 
 export default function Home() {
   return (
@@ -43,27 +44,23 @@ export default function Home() {
         <div className="absolute left-[10%] md:left-[20%] top-[25%] md:top-[20%] text-zinc-700 opacity-50 md:opacity-100"><Sparkles size={24} className="w-4 h-4 md:w-6 md:h-6" /></div>
         <div className="absolute right-[15%] md:right-[25%] bottom-[50%] md:bottom-[40%] text-zinc-700 opacity-50 md:opacity-100"><Sparkles size={16} className="w-3 h-3 md:w-4 md:h-4" /></div>
 
-        {/* People/Client Stack Bottom Left */}
+        {/* Expertise Tags Bottom Left */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.8 }}
-          className="absolute left-[5%] md:left-[10%] bottom-[15%] md:bottom-24 z-30 transform scale-75 md:scale-100 origin-bottom-left"
+          className="absolute left-[5%] md:left-[8%] bottom-[15%] md:bottom-20 z-30 origin-bottom-left flex flex-col gap-2 md:gap-3"
         >
-          <div className="flex items-center gap-2 mb-2">
-            <span className="text-[10px] font-mono tracking-widest uppercase opacity-70">Among My Clients</span>
-            <div className="h-px w-12 bg-white/20"></div>
+          <div className="flex items-center gap-2 ml-1">
+            <span className="text-[9px] md:text-[10px] font-mono tracking-widest uppercase opacity-60">Expertise</span>
+            <div className="h-px w-8 bg-white/20"></div>
           </div>
-          <div className="flex -space-x-2">
-            <div className="w-8 h-8 rounded-full border-2 border-[#0a0a0a] overflow-hidden bg-zinc-800">
-                <img src={`https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=64&h=64&fit=crop`} className="w-full h-full object-cover grayscale" />
-            </div>
-            <div className="w-8 h-8 rounded-full border-2 border-[#0a0a0a] overflow-hidden bg-zinc-800">
-                <img src={`https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=64&h=64&fit=crop`} className="w-full h-full object-cover grayscale" />
-            </div>
-            <div className="w-8 h-8 rounded-full border-2 border-[#0a0a0a] overflow-hidden bg-zinc-800">
-                <img src={`https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=64&h=64&fit=crop`} className="w-full h-full object-cover grayscale" />
-            </div>
+          <div className="flex flex-wrap gap-2 max-w-[180px] md:max-w-[260px]">
+            {['Video Editing', 'Web Development', 'UI/UX Design', 'Branding'].map((tag, i) => (
+              <div key={i} className="px-3 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-[10px] md:text-xs font-medium text-zinc-300 pointer-events-none">
+                {tag}
+              </div>
+            ))}
           </div>
         </motion.div>
 
@@ -96,46 +93,59 @@ export default function Home() {
           transition={{ delay: 0.6 }}
           className="absolute left-[2%] md:left-[6%] top-[30%] md:top-[35%] z-30 w-8 h-8 md:w-12 md:h-12 bg-white rounded-full flex items-center justify-center shadow-xl text-black"
         >
-           <Scissors className="w-4 h-4 md:w-5 md:h-5" strokeWidth={2.5} />
+           <Wand2 className="w-4 h-4 md:w-5 md:h-5" strokeWidth={2.5} />
         </motion.div>
 
-        {/* Right Floating Card (Testimonial equivalent) */}
+        {/* Right Floating Proof Card */}
         <motion.div
-           initial={{ opacity: 0, x: 40, rotate: 5 }}
+           initial={{ opacity: 0, x: 40, rotate: 3 }}
            animate={{ opacity: 1, x: 0, rotate: 2 }}
-           transition={{ delay: 0.5 }}
-           className="absolute right-[-2%] md:right-[8%] top-[55%] md:top-[50%] z-20 w-[180px] md:w-[280px] bg-white text-black p-3 md:p-5 rounded-xl md:rounded-2xl shadow-2xl"
+           whileHover={{ y: -5, rotate: 0, scale: 1.02 }}
+           transition={{ delay: 0.5, duration: 0.4 }}
+           className="absolute right-[-2%] md:right-[5%] top-[50%] md:top-[42%] z-20 w-[200px] md:w-[320px] bg-white/90 backdrop-blur-xl border border-white/60 text-zinc-900 p-4 md:p-6 rounded-2xl md:rounded-[2rem] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] cursor-default"
         >
-           <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-4">
-             <div className="w-6 h-6 md:w-10 md:h-10 rounded-full bg-zinc-200 overflow-hidden border border-black/10 flex-shrink-0">
-                <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=100&fit=crop" className="w-full h-full object-cover grayscale" />
+           <div className="flex items-center gap-3 mb-4 md:mb-6">
+             <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-white flex-shrink-0 shadow-md">
+                <LazyImage 
+                  src="https://res.cloudinary.com/domyd01x9/image/upload/f_auto,q_auto/WhatsApp_Image_2026-04-21_at_10.46.33_AM_f1idpo" 
+                  alt="Ujwal Guru" 
+                  className="w-full h-full object-[center_top] object-cover" 
+                  containerClassName="w-full h-full" 
+                />
              </div>
-             <div className="overflow-hidden">
-               <div className="text-[10px] md:text-sm font-bold leading-tight truncate">Airavoto Gaming</div>
-               <div className="text-[8px] md:text-[10px] uppercase tracking-widest opacity-60 truncate">Operations Manager</div>
+             <div>
+               <div className="text-sm md:text-base font-bold leading-tight tracking-tight">Ujwal Guru</div>
+               <div className="text-[9px] md:text-[10px] uppercase tracking-widest opacity-60 font-mono mt-0.5">Proven Results</div>
              </div>
-             <div className="ml-auto text-black/20 hidden md:block"><Sparkles size={20}/></div>
-           </div>
-           <p className="text-[10px] md:text-xs leading-relaxed font-medium mb-3 md:mb-4 opacity-80 line-clamp-3 md:line-clamp-none">
-             "Ujwal's creativity transformed our ideas into stunning digital solutions that boosted engagement and significantly increased efficiency."
-           </p>
-           <div className="text-[10px] md:text-sm font-serif italic border-t border-black/10 pt-2 md:pt-3 opacity-90 truncate">
-             "One of the Best Deliveries"
            </div>
 
-           {/* Right side tool badges (Ae Pr equivalent) */}
-           <div className="absolute -top-3 -right-3 md:-top-6 md:-right-6 flex items-center gap-0.5 z-30">
-             <div className="w-8 h-8 md:w-12 md:h-12 bg-[#00000e] text-white rounded-full flex items-center justify-center text-[8px] md:text-xs font-bold border border-white/20 shadow-xl relative -mr-1.5 md:-mr-2"><span className="text-[#9999ff]">Ae</span></div>
-             <div className="w-8 h-8 md:w-12 md:h-12 bg-[#00000e] text-white rounded-full flex items-center justify-center text-[8px] md:text-xs font-bold border border-white/20 shadow-xl"><span className="text-[#e2a8ff]">Pr</span></div>
+           <div className="flex flex-col gap-3 md:gap-4 mb-4 md:mb-5">
+              <div className="flex items-center gap-2.5">
+                 <div className="p-1.5 md:p-2 rounded-lg bg-green-100 text-green-700 shadow-inner"><TrendingUp size={16} strokeWidth={2.5}/></div>
+                 <div className="text-xs md:text-sm font-medium"><span className="font-bold text-black text-sm md:text-base">+120%</span> Engagement</div>
+              </div>
+              <div className="flex items-center gap-2.5">
+                 <div className="p-1.5 md:p-2 rounded-lg bg-purple-100 text-purple-700 shadow-inner"><Video size={16} strokeWidth={2.5}/></div>
+                 <div className="text-xs md:text-sm font-medium"><span className="font-bold text-black text-sm md:text-base">50+</span> Videos Edited</div>
+              </div>
+              <div className="flex items-center gap-2.5">
+                 <div className="p-1.5 md:p-2 rounded-lg bg-blue-100 text-blue-700 shadow-inner"><Globe size={16} strokeWidth={2.5}/></div>
+                 <div className="text-xs md:text-sm font-medium"><span className="font-bold text-black text-sm md:text-base">10+</span> Websites Built</div>
+              </div>
            </div>
+
+           <p className="text-[10px] md:text-xs leading-relaxed font-medium opacity-80 border-t border-black/10 pt-3 md:pt-4">
+             Delivering real results through creative video editing and modern web development.
+           </p>
         </motion.div>
 
         {/* Central Portrait Container */}
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[350px] md:w-[480px] z-10 flex flex-col items-center justify-end pointer-events-none">
-          <img
-            src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&fit=crop"
+          <LazyImage
+            src="https://res.cloudinary.com/domyd01x9/image/upload/f_auto,q_auto/WhatsApp_Image_2026-04-21_at_10.46.33_AM_f1idpo"
             alt="Portrait"
             className="w-full h-auto object-cover grayscale opacity-90 brightness-110 drop-shadow-2xl"
+            containerClassName="w-full h-full flex flex-col justify-end"
             style={{ maskImage: 'linear-gradient(to top, transparent 0%, rgba(0,0,0,1) 40%)', WebkitMaskImage: 'linear-gradient(to top, transparent 0%, rgba(0,0,0,1) 40%)' }}
           />
         </div>
@@ -153,6 +163,175 @@ export default function Home() {
         </motion.div>
       </div>
 
+      {/* Featured Showcase Section */}
+      <div className="max-w-[1400px] mx-auto px-4 md:px-8 mt-24 w-full">
+        <div className="flex flex-col md:flex-row gap-8 items-start md:items-end justify-between mb-8 md:mb-12">
+          <div>
+            <h2 className="text-4xl md:text-6xl font-serif italic mb-4">Featured <span className="font-sans not-italic font-medium text-transparent bg-clip-text bg-gradient-to-r from-zinc-300 to-zinc-600">Showcase</span></h2>
+            <p className="text-sm opacity-60 max-w-md leading-relaxed text-zinc-300">
+              A curated selection of my finest digital creations, bridging the gap between engaging video production and robust software engineering.
+            </p>
+          </div>
+          <Link to="/work" className="text-xs font-mono uppercase tracking-widest hover:text-white/70 transition-colors border-b border-white/20 pb-1">
+            Explore All Work
+          </Link>
+        </div>
+
+        {/* Bento-style Showcase Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
+          
+          {/* Large Video/Reel Card */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            className="lg:col-span-4 xl:col-span-3 relative h-[550px] md:h-[600px] bg-[#0a0a0a] rounded-[2rem] border border-white/10 overflow-hidden group hover:border-white/20 transition-colors"
+          >
+             <div className="absolute top-5 left-5 z-20 flex gap-2">
+                <span className="bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full text-[10px] font-mono tracking-widest uppercase border border-white/10 shadow-lg relative">
+                  <span className="absolute -left-1 -top-1 w-2 h-2 bg-red-500 rounded-full animate-ping opacity-75"></span>
+                  <span className="absolute -left-1 -top-1 w-2 h-2 bg-red-500 rounded-full"></span>
+                  Video Reel
+                </span>
+             </div>
+             
+             {/* Reel Embed Container */}
+             <div className="w-full h-full flex justify-center items-center bg-[#050505] overflow-hidden relative">
+                {/* The iframe embed for IG Reel */}
+                <iframe 
+                  src="https://www.instagram.com/p/C4lbtCJswgW/embed/captioned" 
+                  className="absolute inset-[-2px] w-[calc(100%+4px)] h-[calc(100%+4px)] border-0 outline-none max-w-none" 
+                  scrolling="no" 
+                  allowTransparency={true}
+                ></iframe>
+                {/* Overlay to catch clicks if we want to route instead, but here we let them interact with the reel */}
+             </div>
+          </motion.div>
+
+          {/* Software / ERP Showcase */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ delay: 0.1 }}
+            className="lg:col-span-8 xl:col-span-9 flex flex-col gap-4"
+          >
+            {/* Top Large Project */}
+            <Link to="/airavoto-erp" className="relative h-[334px] md:h-[380px] bg-white text-black rounded-[2rem] border border-transparent overflow-hidden group hover:shadow-[0_0_40px_rgba(255,255,255,0.15)] transition-all flex flex-col justify-end p-6 md:p-10 block cursor-pointer">
+               <div className="absolute top-6 left-6 z-20">
+                  <span className="bg-white/50 backdrop-blur-md px-3 py-1.5 rounded-full text-[10px] font-mono tracking-widest uppercase text-black border border-black/10 shadow-sm">Cloud Architecture</span>
+               </div>
+               
+               <LazyImage 
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&fit=crop" 
+                  alt="Airavoto ERP" 
+                  containerClassName="w-full h-full absolute inset-0 mix-blend-multiply opacity-[0.15] group-hover:opacity-[0.25] group-hover:scale-105 transition-all duration-700 pointer-events-none" 
+                  className="w-full h-full object-cover" 
+               />
+               
+               <div className="relative z-20 max-w-2xl">
+                  <h3 className="text-3xl md:text-5xl font-sans font-bold mb-3 md:mb-4 tracking-tight group-hover:underline underline-offset-4 decoration-2">Airavoto ERP System</h3>
+                  <p className="text-sm md:text-base font-medium opacity-80 leading-relaxed max-w-xl">
+                     A robust cloud-based enterprise resource planning platform engineered specifically for the high-volume environment of gaming cafés, reducing latency and operational friction.
+                  </p>
+               </div>
+            </Link>
+
+            {/* Bottom Split showcase */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 h-auto md:h-[204px]">
+               <div className="relative bg-[#111] rounded-[2rem] border border-white/5 overflow-hidden group p-5 flex flex-col justify-center items-center hover:border-white/20 transition-all cursor-pointer min-h-[180px]">
+                  {/* Interactive Chat Mockup */}
+                  <div className="w-[120px] md:w-[140px] flex flex-col gap-2.5 relative z-0 group-hover:scale-[1.05] group-hover:rotate-2 transition-transform duration-500 mb-6">
+                      <div className="bg-zinc-800/80 backdrop-blur-sm shadow-2xl rounded-2xl rounded-tl-sm p-3 w-[85%] self-start border border-white/10 group-hover:-translate-x-1 group-hover:-translate-y-1 transition-transform duration-500">
+                          <div className="w-full h-1.5 md:h-2 rounded-full bg-zinc-600 mb-1.5"></div>
+                          <div className="w-2/3 h-1.5 md:h-2 rounded-full bg-zinc-600"></div>
+                      </div>
+                      <div className="bg-zinc-200/90 backdrop-blur-sm shadow-2xl rounded-2xl rounded-tr-sm p-3 w-[85%] self-end border border-white/20 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-500 delay-75">
+                          <div className="w-full h-1.5 md:h-2 rounded-full bg-zinc-400 mb-1.5"></div>
+                          <div className="w-1/2 h-1.5 md:h-2 rounded-full bg-zinc-400"></div>
+                      </div>
+                      <div className="absolute -bottom-6 right-0 text-white/5 group-hover:text-white/10 transition-colors pointer-events-none z-[-1]">
+                          <Code2 size={64} />
+                      </div>
+                  </div>
+
+                  {/* Bottom fade for text readability */}
+                  <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#111] via-[#111]/80 to-transparent z-10 pointer-events-none"></div>
+
+                  <div className="absolute bottom-5 left-5 z-20">
+                     <h4 className="text-lg md:text-xl font-bold mb-1 drop-shadow-md">AI Chatballs</h4>
+                     <p className="text-[9px] md:text-[10px] font-mono opacity-50 uppercase tracking-widest drop-shadow-md">Custom LLM</p>
+                  </div>
+               </div>
+               
+               <Link to="/ui-ux" className="block relative bg-[#0a0a0a] rounded-[2rem] border border-white/10 overflow-hidden group p-5 flex flex-col justify-center items-center hover:border-white/20 transition-all cursor-pointer min-h-[180px]">
+                  {/* Interactive Dashboard Mockup */}
+                  <div className="w-[120px] h-[130px] md:w-[140px] md:h-[150px] bg-zinc-900 shadow-2xl relative flex flex-col group-hover:scale-[1.05] group-hover:-rotate-3 transition-transform duration-500 border border-white/10 mt-2 md:mt-0 p-2.5 md:p-3 gap-2 md:gap-2.5 rounded-xl mb-4">
+                      {/* Dashboard Header */}
+                      <div className="flex gap-1.5 items-center pb-2 border-b border-white/5 shrink-0">
+                          <div className="w-2.5 h-2.5 rounded-full bg-[#333]"></div>
+                          <div className="w-2.5 h-2.5 rounded-full bg-[#333]"></div>
+                          <div className="w-16 h-1.5 rounded-full bg-white/10 ml-auto"></div>
+                      </div>
+                      {/* Dashboard Metrics */}
+                      <div className="flex gap-2 h-10 md:h-12 shrink-0">
+                          <div className="w-1/3 bg-white/5 rounded-lg h-full group-hover:-translate-y-1 group-hover:shadow-[0_10px_20px_rgba(255,255,255,0.05)] transition-all duration-500 relative overflow-hidden">
+                              <div className="absolute bottom-1.5 left-1.5 w-4 h-1 rounded-full bg-white/20"></div>
+                          </div>
+                          <div className="w-2/3 bg-white/10 rounded-lg h-full group-hover:-translate-y-1 group-hover:shadow-[0_10px_20px_rgba(255,255,255,0.05)] transition-all duration-500 delay-75 flex flex-col gap-1 p-1.5 justify-end">
+                              <div className="w-full h-1 rounded-full bg-white/20"></div>
+                              <div className="w-full h-1 rounded-full bg-white/20"></div>
+                              <div className="w-2/3 h-1 rounded-full bg-white/20"></div>
+                          </div>
+                      </div>
+                      <div className="flex-1 w-full bg-white/5 rounded-lg group-hover:-translate-y-1 group-hover:shadow-[0_10px_20px_rgba(255,255,255,0.05)] transition-all duration-500 delay-150 flex items-center justify-center">
+                           <Sparkles className="text-white/20 w-4 h-4 md:w-5 md:h-5 group-hover:text-white/40 transition-colors" />
+                      </div>
+                  </div>
+
+                  {/* Bottom fade for text readability */}
+                  <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent z-10 pointer-events-none"></div>
+
+                  <div className="absolute bottom-5 left-5 z-20">
+                     <h4 className="text-lg md:text-xl font-bold mb-1 drop-shadow-md">UI/UX Design</h4>
+                     <p className="text-[9px] md:text-[10px] font-mono opacity-50 uppercase tracking-widest drop-shadow-md">Web Interfaces</p>
+                  </div>
+               </Link>
+
+               <Link to="/social-posts" className="block relative bg-[#050505] rounded-[2rem] border border-white/10 overflow-hidden group p-5 flex flex-col justify-center items-center hover:border-white/20 transition-all cursor-pointer min-h-[180px]">
+                   {/* Social Media Post Mockup Animation */}
+                   <div className="w-[110px] h-[140px] md:w-[130px] md:h-[160px] bg-white rounded-xl shadow-2xl relative flex flex-col group-hover:scale-[1.03] group-hover:-rotate-2 transition-transform duration-500 overflow-hidden border border-zinc-200 mt-2 md:mt-0">
+                       <div className="flex items-center gap-1.5 p-1.5 md:p-2 border-b border-zinc-100 shrink-0">
+                           <div className="w-3 h-3 md:w-4 md:h-4 rounded-full bg-zinc-300"></div>
+                           <div className="w-10 md:w-12 h-1 md:h-1.5 rounded-full bg-zinc-200"></div>
+                       </div>
+                       <div className="flex-1 w-full bg-zinc-100 relative overflow-hidden">
+                           <LazyImage src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=200&fit=crop" containerClassName="w-full h-full" className="w-full h-full object-cover grayscale opacity-80" />
+                       </div>
+                       <div className="p-1.5 md:p-2 gap-1 md:gap-1.5 flex flex-col shrink-0">
+                           <div className="flex gap-1 md:gap-1.5">
+                               <Heart className="w-2.5 h-2.5 md:w-3 md:h-3 text-zinc-400" />
+                               <MessageCircle className="w-2.5 h-2.5 md:w-3 md:h-3 text-zinc-400" />
+                               <Send className="w-2.5 h-2.5 md:w-3 md:h-3 text-zinc-400" />
+                           </div>
+                           <div className="w-16 h-1 md:h-1.5 rounded-full bg-zinc-200 mt-0.5"></div>
+                           <div className="w-10 h-1 md:h-1.5 rounded-full bg-zinc-200"></div>
+                       </div>
+                   </div>
+                   
+                   {/* Bottom fade for text readability */}
+                   <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent z-10 pointer-events-none"></div>
+                   
+                   <div className="absolute bottom-5 left-5 z-20">
+                       <h4 className="text-lg md:text-xl font-bold mb-1 drop-shadow-md">Social Posts</h4>
+                       <p className="text-[9px] md:text-[10px] font-mono shadow-black opacity-50 uppercase tracking-widest drop-shadow-md">Brand Marketing</p>
+                   </div>
+               </Link>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+
       {/* Secondary Grid Section */}
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 mt-24 mb-24 w-full">
         <div className="text-center mb-12">
@@ -164,21 +343,34 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {[
-             { title: 'Airavoto ERP', desc: 'Cloud Application', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&fit=crop' },
-             { title: 'AI Chatballs', desc: 'Automated Assistants', img: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=600&fit=crop' },
-             { title: 'Web Frameworks', desc: 'React & Tailwind', img: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600&fit=crop' },
-             { title: 'Aadarsh Kathayen', desc: 'Video Editing', img: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=600&fit=crop' }
-          ].map((proj, i) => (
-             <Link key={i} to="/work" className="group relative w-full aspect-[4/5] bg-zinc-900 rounded-[2rem] overflow-hidden border border-white/10 block">
-                <img src={proj.img} className="w-full h-full object-cover grayscale opacity-40 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700" alt={proj.title} />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/40 to-transparent"></div>
-                <div className="absolute bottom-6 left-6 text-left">
-                   <h3 className="text-lg font-bold text-white mb-1">{proj.title}</h3>
-                   <div className="text-[10px] font-mono tracking-widest uppercase opacity-60 text-white">{proj.desc}</div>
-                </div>
-             </Link>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4 lg:gap-5">
+           {[
+             { name: 'React', category: 'Frontend', icon: Component },
+             { name: 'Tailwind CSS', category: 'Styling', icon: Palette },
+             { name: 'Next.js', category: 'Framework', icon: Layers },
+             { name: 'TypeScript', category: 'Language', icon: Code2 },
+             { name: 'Node.js', category: 'Backend', icon: Server },
+             { name: 'AWS Cloud', category: 'Infrastructure', icon: Box },
+             { name: 'Figma', category: 'UI/UX Design', icon: Figma },
+             { name: 'Photoshop', category: 'Photo Editing', icon: Aperture },
+             { name: 'Canva', category: 'Graphic Design', icon: LayoutTemplate },
+             { name: 'Premiere Pro', category: 'Video Editing', icon: Video },
+             { name: 'After Effects', category: 'Motion Graphics', icon: Wand2 },
+             { name: 'OpenAI API', category: 'AI Integration', icon: Cpu }
+          ].map((tool, i) => (
+             <motion.div 
+                key={i} 
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                className="group relative bg-[#111] hover:bg-[#1a1a1a] rounded-2xl border border-white/5 hover:border-white/15 overflow-hidden transition-all duration-300 flex flex-col items-center justify-center p-6 sm:p-8 aspect-square cursor-default hover:-translate-y-1 hover:shadow-2xl"
+             >
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <tool.icon className="w-10 h-10 md:w-12 md:h-12 text-zinc-500 group-hover:text-white transition-colors duration-300 mb-4 drop-shadow-md group-hover:scale-110" strokeWidth={1.5} />
+                <h3 className="text-sm md:text-base font-bold text-white mb-1 tracking-tight text-center relative z-10">{tool.name}</h3>
+                <div className="text-[9px] md:text-[10px] font-mono tracking-widest uppercase opacity-40 text-white text-center relative z-10">{tool.category}</div>
+             </motion.div>
           ))}
         </div>
       </div>

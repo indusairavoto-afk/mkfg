@@ -7,6 +7,9 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Work from './pages/Work';
 import Services from './pages/Services';
+import UiUxShowcase from './pages/UiUxShowcase';
+import SocialPostsShowcase from './pages/SocialPostsShowcase';
+import AiravotoERP from './pages/AiravotoERP';
 import BackToTop from './components/BackToTop';
 
 function PageWrapper({ children }: { children: ReactNode }) {
@@ -38,6 +41,9 @@ function AnimatedRoutes() {
         <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
         <Route path="/work" element={<PageWrapper><Work /></PageWrapper>} />
         <Route path="/services" element={<PageWrapper><Services /></PageWrapper>} />
+        <Route path="/ui-ux" element={<PageWrapper><UiUxShowcase /></PageWrapper>} />
+        <Route path="/social-posts" element={<PageWrapper><SocialPostsShowcase /></PageWrapper>} />
+        <Route path="/airavoto-erp" element={<PageWrapper><AiravotoERP /></PageWrapper>} />
       </Routes>
     </AnimatePresence>
   );

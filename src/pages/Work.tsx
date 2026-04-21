@@ -86,21 +86,21 @@ export default function Work() {
       <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
         {experiences.map((exp, i) => {
           let spanClass = "col-span-1 md:col-span-6";
-          let boxClass = "border border-white/10 bg-[#0a0a0a] rounded-[2rem] p-8 transition-all duration-500 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,255,255,0.06)] hover:border-white/20 hover:bg-zinc-900 group relative z-0 hover:z-10";
+          let themeClass = "border border-white/10 bg-[#0a0a0a] hover:border-white/20 hover:bg-zinc-900 md:hover:shadow-[0_0_40px_rgba(255,255,255,0.06)]";
           
           if (i === 1) {
-            spanClass = "col-span-1 md:col-span-6";
-            boxClass = "bg-white text-black rounded-[2rem] p-8 transition-all duration-500 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,255,255,0.15)] group relative z-0 hover:z-10";
+            themeClass = "bg-white text-black border-transparent md:hover:shadow-[0_0_40px_rgba(255,255,255,0.15)]";
           } else if (i === 2) {
             spanClass = "col-span-1 md:col-span-4";
-            boxClass = "bg-[#0a0a0a] border border-white/10 rounded-[2rem] p-8 transition-all duration-500 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,255,255,0.06)] hover:border-white/20 hover:bg-zinc-900 group relative z-0 hover:z-10";
           } else if (i === 3) {
             spanClass = "col-span-1 md:col-span-8";
-            boxClass = "bg-[#111] border border-white/5 rounded-[2rem] p-8 transition-all duration-500 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,255,255,0.06)] hover:border-white/20 hover:bg-[#1a1a1a] group relative z-0 hover:z-10";
+            themeClass = "border border-white/5 bg-[#111] hover:border-white/20 hover:bg-[#1a1a1a] md:hover:shadow-[0_0_40px_rgba(255,255,255,0.06)]";
           } else if (i === 4) {
             spanClass = "col-span-1 md:col-span-12";
-            boxClass = "bg-[#0a0a0a] border border-white/10 rounded-[2rem] p-8 transition-all duration-500 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,255,255,0.06)] hover:border-white/20 hover:bg-zinc-900 group relative z-0 hover:z-10";
           }
+
+          const baseBoxClass = "rounded-3xl md:rounded-[2rem] p-6 md:p-8 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] md:hover:scale-[1.02] md:hover:-translate-y-1 group relative z-0 hover:z-10 focus:outline-none focus:ring-2 focus:ring-zinc-500/50 touch-manipulation";
+          const boxClass = `${baseBoxClass} ${themeClass}`;
 
           const isExpanded = expandedId === i;
           const isLight = i === 1;
@@ -109,11 +109,20 @@ export default function Work() {
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.5, ease: "easeOut" }}
+              viewport={{ once: true, margin: "-50px" }}
               key={i} 
-              className={`${spanClass} ${boxClass} flex flex-col justify-between min-h-[300px] cursor-pointer`}
+              className={`${spanClass} ${boxClass} flex flex-col justify-between min-h-[250px] md:min-h-[300px] cursor-pointer`}
               onClick={() => toggleExpand(i)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  toggleExpand(i);
+                }
+              }}
+              tabIndex={0}
+              role="button"
+              aria-expanded={isExpanded}
             >
               <div className="flex-grow flex flex-col">
                 <div className="flex justify-between items-start mb-4">
@@ -140,11 +149,11 @@ export default function Work() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
+                      transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
                       className="overflow-hidden"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      <div className={`pt-6 mt-4 border-t ${isLight ? 'border-black/10' : 'border-white/10'} space-y-6 pb-8`}>
+                      <div className={`pt-4 md:pt-6 mt-4 border-t ${isLight ? 'border-black/10' : 'border-white/10'} space-y-5 md:space-y-6 pb-6 md:pb-8`}>
                         <div>
                           <h4 className={`text-[10px] font-mono uppercase tracking-widest mb-3 ${isLight ? 'opacity-50' : 'opacity-40'}`}>Technologies Used</h4>
                           <div className="flex flex-wrap gap-2">
@@ -169,10 +178,10 @@ export default function Work() {
                 </AnimatePresence>
               </div>
 
-              <div className="flex flex-wrap gap-4 items-end justify-between mt-auto pt-4">
+              <div className="flex flex-wrap gap-4 items-center md:items-end justify-between mt-auto pt-6">
                 <div className="flex flex-wrap gap-2">
                   {exp.tags.map(tag => (
-                    <span key={tag} className={`text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full ${isLight?'border border-black/20':'border border-white/20 group-hover:border-white/40'}`}>
+                    <span key={tag} className={`text-[10px] md:text-[11px] font-bold uppercase tracking-widest px-3 py-1.5 md:py-1 rounded-full ${isLight?'border border-black/20':'border border-white/20 group-hover:border-white/40'}`}>
                       {tag}
                     </span>
                   ))}
