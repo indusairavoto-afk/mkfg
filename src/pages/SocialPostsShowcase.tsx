@@ -91,7 +91,7 @@ export default function SocialPostsShowcase() {
   // Dummy content tailored per category
   const galleries = {
     reels: [
-       { video: "https://res.cloudinary.com/domyd01x9/video/upload/q_auto/f_auto/v1776775264/Video-116_tdpvnp.mp4", title: "Gaming Setup Tour" },
+       { video: "https://res.cloudinary.com/domyd01x9/video/upload/q_auto/f_auto/v1776775264/Video-116_tdpvnp.mp4", title: "Podcast Edit Reel" },
        { video: "https://res.cloudinary.com/domyd01x9/video/upload/q_auto/f_auto/v1776916977/3_Best_Zombie_Games_For_Android_gaming_zombiegamesandroid_games_deadtrigger2tipsandtricks_empisv.mp4", title: "Zombie Games Tips" },
        { video: "https://res.cloudinary.com/domyd01x9/video/upload/q_auto/f_auto/v1776917912/valorant_gameplay_india_valorantgameplay_valorantclip_gaming_valorant_valorantmontage_g3tkql.mp4", title: "Valorant Gameplay" },
        { img: "https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=600&fit=crop", title: "Behind the Scenes" },
@@ -293,7 +293,7 @@ export default function SocialPostsShowcase() {
                       <h4 className="text-base md:text-lg font-semibold text-white mb-2 md:mb-3">The Objective</h4>
                       <p className="text-zinc-400 text-sm md:text-base leading-relaxed">
                         {selectedMedia.mediaType === 'reels' 
-                          ? 'To craft a highly engaging, fast-paced short-form video that maximizes viewer retention and drives viral algorithmic reach on platforms like TikTok and Instagram Reels.'
+                          ? 'To craft a highly engaging, fast-paced short-form video that maximizes viewer retention and drives viral algorithmic reach on platforms like Instagram Reels and YouTube Shorts.'
                           : selectedMedia.mediaType === 'posts'
                           ? 'To design a visually striking and on-brand static social media post that conveys the core message instantly, driving likes, saves, and shares across feeds.'
                           : 'To conceptualize and design a high-converting YouTube thumbnail that cuts through the noise, maximizing Click-Through Rate (CTR) and initial video momentum.'}
