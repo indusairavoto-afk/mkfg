@@ -1,9 +1,21 @@
 import { motion } from 'motion/react';
-import { Play, TrendingUp, Sparkles, Code2, MonitorPlay, Users, Heart, MessageCircle, Send, Figma, Video, Server, Component, Palette, Box, Layers, Cpu, Compass, Aperture, LayoutTemplate, Wand2, Globe } from 'lucide-react';
+import { Play, TrendingUp, Sparkles, Code2, MonitorPlay, Users, Heart, MessageCircle, Send, Figma, Video, Server, Component, Palette, Box, Layers, Cpu, Compass, Aperture, LayoutTemplate, Wand2, Globe, Volume2, VolumeX } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { LazyImage } from '../components/LazyImage';
+import { useState, useRef } from 'react';
 
 export default function Home() {
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const toggleMute = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setIsMuted(videoRef.current.muted);
+    }
+  };
+
   return (
     <div className="w-full flex flex-col">
       {/* Main Hero Card wrapper */}
@@ -202,8 +214,9 @@ export default function Home() {
              </div>
              
              {/* Reel Embed Container */}
-             <div className="w-full h-full flex justify-center items-center bg-[#050505] overflow-hidden relative">
+             <div className="w-full h-full flex justify-center items-center bg-[#050505] overflow-hidden relative group">
                 <video 
+                  ref={videoRef}
                   src="https://res.cloudinary.com/domyd01x9/video/upload/v1776775264/Video-116_tdpvnp.mp4" 
                   className="absolute inset-0 w-full h-full object-cover" 
                   autoPlay 
@@ -211,6 +224,20 @@ export default function Home() {
                   muted 
                   playsInline
                 ></video>
+                
+                {/* Glassmorphism Audio Toggle Button */}
+                <button 
+                  onClick={toggleMute}
+                  className="absolute center inset-0 m-auto w-16 h-16 md:w-20 md:h-20 flex flex-col items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-[0_0_30px_rgba(0,0,0,0.5)] opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 hover:bg-white/20 z-10"
+                >
+                  {isMuted ? <VolumeX size={24} className="mb-1" /> : <Volume2 size={24} className="mb-1" />}
+                  <span className="text-[10px] font-bold tracking-widest uppercase">{isMuted ? "Unmute" : "Mute"}</span>
+                </button>
+                
+                {/* Persistent small indicator on bottom right */}
+                <div className="absolute bottom-4 right-4 bg-black/40 backdrop-blur-md p-2 rounded-full border border-white/10 text-white/70 pointer-events-none md:hidden z-10">
+                  {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
+                </div>
              </div>
           </motion.div>
 
